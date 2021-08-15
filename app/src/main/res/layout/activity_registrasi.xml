@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp"
+    tools:context=".users.RegistrasiActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/sma"
+            android:layout_marginTop="-100dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrasi"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="#00BCD4"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#a9aaac"
+            android:textColor="#100b20">
+
+            <EditText
+                android:id="@+id/edtName"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_username"
+                android:autofillHints="@string/hint_username"
+                android:layout_marginLeft="46dp"
+                android:layout_marginRight="46dp"
+                android:textColorHint="#76818a"
+                android:textColor="#404547"
+                android:background="#0000"
+                android:padding="14dp"
+                android:inputType="textPersonName"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#a9aaac"
+            android:textColor="#100b20">
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:autofillHints="@string/hint_email"
+                android:layout_marginLeft="46dp"
+                android:layout_marginRight="46dp"
+                android:textColorHint="#76818a"
+                android:textColor="#404547"
+                android:background="#0000"
+                android:padding="14dp"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#a9aaac"
+            android:textColor="#100b20">
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:autofillHints="@string/hint_password"
+                android:layout_marginLeft="46dp"
+                android:layout_marginRight="46dp"
+                android:textColorHint="#76818a"
+                android:textColor="#404547"
+                android:background="#0000"
+                android:padding="14dp"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_pass"
+                android:drawablePadding="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnRegstrasi"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_bulat"
+            android:text="Registrasi" />
+
+        <RelativeLayout
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/btnsave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv01"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudah Punya Akun ?"/>
+
+            <TextView
+                android:id="@+id/btnbackLogin"
+                android:layout_toEndOf="@+id/tv01"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login Disini"
+                android:textColor="#EA495F"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.LoginActivity"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="20dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/sma"
+            android:layout_gravity="center"
+            android:layout_marginTop="-75dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APLIKASI E-RAPOR SMAN 1 BATU AMPAR"
+            android:textSize="15dp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Silahkan Login"
+            android:textSize="25dp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#a9aaac"
+                android:textColor="#100b20">
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:autofillHints="@string/hint_email"
+                    android:layout_marginLeft="46dp"
+                    android:layout_marginRight="46dp"
+                    android:textColorHint="#76818a"
+                    android:textColor="#404547"
+                    android:background="#0000"
+                    android:padding="14dp"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:passwordToggleEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#a9aaac"
+                android:textColor="#100b20">
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:autofillHints="@string/hint_password"
+                    android:layout_marginLeft="46dp"
+                    android:layout_marginRight="46dp"
+                    android:textColorHint="#76818a"
+                    android:textColor="#404547"
+                    android:background="#0000"
+                    android:padding="14dp"
+                    android:inputType="textPassword"
+                    android:drawableStart="@drawable/ic_pass"
+                    android:drawablePadding="16dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnlogin"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:text="Login"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_bulat"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum Punya Akun ?"
+                android:layout_marginLeft="35dp"/>
+
+            <TextView
+                android:id="@+id/btnRegis"
+                android:layout_toEndOf="@+id/tv01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Registrasi Disini"
+                android:textColor="#EA495F"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

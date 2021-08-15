@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMAN1BATAM</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="hint_username">Name</string>
+    <string name="hint_password">Password</string>
+    <string name="namaLengkap">Nama Lengkap</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_noTelp">Nomor Telp</string>
+</resources>
