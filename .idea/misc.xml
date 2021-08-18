@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Tisto/Documents/Android/ProjectKuliah/smabatamApp/app/src/main/res/layout/activity_nilai.xml" value="0.3625" />
+        <entry key="..\:/Users/Tisto/Documents/Android/ProjectKuliah/smabatamApp/app/src/main/res/layout/activity_siswa.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Tisto/Documents/Android/ProjectKuliah/smabatamApp/app/src/main/res/layout/content_jadwal_ujian.xml" value="0.3625" />
+        <entry key="..\:/Users/Tisto/Documents/Android/ProjectKuliah/smabatamApp/app/src/main/res/layout/content_nilai.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="FindBugsConfigurable">
+    <option name="make" value="true" />
+    <option name="effort" value="default" />
+    <option name="priority" value="Medium" />
+    <option name="excludeFilter" value="" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
@@ -12,5 +28,8 @@
         <option value="SMAN1BATAM.app" />
       </set>
     </option>
+  </component>
+  <component name="SuppressionsComponent">
+    <option name="suppComments" value="[]" />
   </component>
 </project>

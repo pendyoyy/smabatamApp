@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sman1batam.R;
+import com.example.sman1batam.activity.ActivityNilaiTugas;
 import com.example.sman1batam.api.ApiClient;
 import com.example.sman1batam.guru.HomeGuru;
 import com.example.sman1batam.model.ResponseModel;
@@ -30,16 +31,16 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-   private TextView btnRegis;
-   private Button btnLogin;
-   private EditText edtEmail, edtPassword;
-   private ProgressDialog pd;
+    private TextView btnRegis;
+    private Button btnLogin;
+    private EditText edtEmail, edtPassword;
+    private ProgressDialog pd;
 
     SessionManager session;
     SharedPreferences prefs;
     PrefSetting prefSetting;
 
-    protected void onCreate(Bundle saveInstanceState){
+    protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -53,6 +54,16 @@ public class LoginActivity extends AppCompatActivity {
         prefs = prefSetting.getSharePreferences();
         session = new SessionManager(this);
         prefSetting.checkLogin(session, prefs);
+
+        // hapus ini
+        session = new SessionManager(this);
+        if (session.isLoggedIn()) {
+            Intent intents = new Intent(LoginActivity.this, ActivityNilaiTugas.class);
+            intents.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intents);
+            finish();
+        }
+        // sampai sini
 
         btnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,84 +80,93 @@ public class LoginActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString().trim();
                 String password = edtPassword.getText().toString().trim();
 
-                if (email.isEmpty())
-                {
+                if (email.isEmpty()) {
                     edtEmail.setError("Enter Email");
                     edtEmail.requestFocus();
                     return;
                 }
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                {
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     edtEmail.setError("Enter Valid Email");
                     edtEmail.requestFocus();
                     return;
                 }
-                if (password.isEmpty())
-                {
+                if (password.isEmpty()) {
                     edtPassword.setError("Enter Password");
                     edtPassword.requestFocus();
                     return;
                 }
-                if (password.length()<8)
-                {
+                if (password.length() < 8) {
                     edtPassword.setError("Password too Short");
                     edtPassword.requestFocus();
                     return;
                 }
-                if (password.length()>30)
-                {
+                if (password.length() > 30) {
                     edtPassword.setError("Password too Long");
                     edtPassword.requestFocus();
-                }
-                else
-                {
-                    loginUser(email,password);
+                } else {
+                    loginUser(email, password);
                 }
             }
         });
     }
-    public void loginUser(String email, String password){
+
+    public void loginUser(String email, String password) {
 
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
-        pd = ProgressDialog.show(this,null,"Mohon Tunggu....!!!",true,false);
+        pd = ProgressDialog.show(this, null, "Mohon Tunggu....!!!", true, false);
         Call<ResponseModel> call = ApiClient.getApi().login(params);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 ResponseModel respon = response.body();
-                if (response.body().getSuccess()==1) {
+                if (response.body().getSuccess() == 1) {
                     pd.dismiss();
                     btnLogin.setEnabled(true);
                     Toast.makeText(getApplicationContext(), respon.getMassage(), Toast.LENGTH_SHORT).show();
+                    int id = response.body().getUser().getId();
                     String role = response.body().getUser().getRole();
                     String name = response.body().getUser().getName();
                     String email = response.body().getUser().getEmail();
                     session.setLogin(true);
-                    prefSetting.storeRegIdSharedPreferences(LoginActivity.this , name, email, role, prefs);
-                    if(role.equals("1")) {
+                    prefSetting.storeRegIdSharedPreferences(LoginActivity.this, "" + id, name, email, role, prefs);
+
+
+                    // Hapus ini nanti hanya untuk test
+
+                    Intent intents = new Intent(LoginActivity.this, ActivityNilaiTugas.class);
+                    intents.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intents);
+                    finish();
+                    if (true) return;
+
+                    // hapus sampai sini
+
+
+                    if (role.equals("1")) {
                         Intent intent = new Intent(LoginActivity.this, HomeGuru.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
-                    }else {
+                    } else {
                         Intent intent = new Intent(LoginActivity.this, HomeSiswa.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
                     }
 
-                }else{
+                } else {
                     pd.dismiss();
-                    Toast.makeText(LoginActivity.this, "Error:"+respon.getMassage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Error:" + respon.getMassage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
+
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 pd.dismiss();
-                Toast.makeText(LoginActivity.this, "Error:"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Error:" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

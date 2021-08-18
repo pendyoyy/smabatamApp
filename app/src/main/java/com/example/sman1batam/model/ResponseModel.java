@@ -2,9 +2,10 @@ package com.example.sman1batam.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ResponseModel{
+public class ResponseModel implements Serializable {
 
 	@SerializedName("success")
 	private int success;
@@ -21,7 +22,8 @@ public class ResponseModel{
 	@SerializedName("jadwal_ujians")
 	private List<JadwalUjian> jadwalUjians;
 
-
+	@SerializedName("nilaiTugas")
+	public List<Nilai> nilaiTugas;
 
 	public void setSuccess(int success){
 		this.success = success;
